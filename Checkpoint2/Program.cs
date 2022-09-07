@@ -29,8 +29,11 @@
 
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using Checkpoint2;
+using static Checkpoint2.Product;
 
 Main();
 
@@ -58,6 +61,7 @@ static void Main()
     Console.WriteLine("");
     Console.WriteLine("------------------------------------------------------------------");
     Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
+    Console.WriteLine("If you would like to for a specific product, enter 's' or 'search'");
     Console.WriteLine("Or enter 'q' in order to quit the program");
     Console.WriteLine("------------------------------------------------------------------");
     Console.WriteLine("");
@@ -84,11 +88,17 @@ static void Main()
             Console.WriteLine("");
             Console.WriteLine("------------------------------------------------------------------");
             Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
+            Console.WriteLine("If you would like to for a specific product, enter 's' or 'search'");
             Console.WriteLine("Or enter 'q' in order to quit the program");
             Console.WriteLine("------------------------------------------------------------------");
             Console.WriteLine("");
             Console.WriteLine("------------------------------------------------------------------");
             Console.ResetColor();
+        }
+        //  Launch Search method if user types 'y' or 'yes'
+        else if (input.ToLower().Trim() == "s" || input.ToLower().Trim() == "search")
+        {
+            Search(List < Product > productList);
         }
         else
         {
@@ -96,6 +106,7 @@ static void Main()
             Console.WriteLine("The input you entered is not valid.");
             Console.ResetColor();
             Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
+            Console.WriteLine("If you would like to for a specific product, enter 's' or 'search'");
             Console.WriteLine("Or enter 'q' in order to quit the program");
         }
     }
@@ -384,3 +395,63 @@ static void AddProducts(List<Product> productList)
 }
 
 
+static void Search(List<Product> productList)
+{
+    // Save user's input
+    string input = Console.ReadLine();
+
+    Console.WriteLine("");
+    Console.WriteLine("------------------------------------------------------------------");
+    Console.WriteLine("");
+
+    Console.WriteLine("Enter the Product Name of the product you would like to view:");
+
+    while (true)
+    {
+        // Quit and display results if user types 'q', 'quit' or 'exit'
+        if (input.ToLower().Trim() == "q" || input.ToLower().Trim() == "quit" || input.ToLower().Trim() == "exit")
+        {
+            break;
+        }
+        else
+        {
+            // Search for products and add to searchResult list
+            List<Product> searchResult =
+                (from product in productList
+                 where product.productName.ToLower().Trim() == input.ToLower().Trim()
+                 select product).ToList();
+
+            // Print error message if no results where found
+            if (searchResult.Count == 0)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("------------------------------------------------------------------");
+                Console.WriteLine("");
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Your search did not return any results");
+                Console.ResetColor();
+
+                Console.WriteLine("");
+                Console.WriteLine("------------------------------------------------------------------");
+                Console.WriteLine("");
+
+                Console.WriteLine("Enter the name of the product you would like to view:");
+            }
+            else
+            {
+                // Print results from search in console
+                foreach (Product product in searchResult)
+                {
+                    Console.WriteLine("------------------------------------------------------------------");
+                    Console.WriteLine("");
+                    Console.WriteLine("------------------------------------------------------------------");
+
+                    Console.WriteLine("Category:".PadRight(15) + "Product Name:".PadRight(15) + "Price:".PadRight(15) + "Brand:".PadRight(15) + "Model/Resolution:");
+
+                    Console.WriteLine(product.category.name.PadRight(15) + product.productName.PadRight(15) + product.price.ToString().PadRight(15) + product.category.brand.PadRight(15) + product.category.mod_res);
+                }
+            }
+        }
+    }
+}
