@@ -42,6 +42,41 @@ static void Main()
 
     // Run AddProducts method
     AddProducts(productList);
+
+    Console.ForegroundColor = ConsoleColor.DarkBlue;
+    Console.WriteLine("------------------------------------------------------------------");
+    Console.WriteLine("");
+    Console.WriteLine("------------------------------------------------------------------");
+    Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
+    Console.WriteLine("Or enter 'q' in order to quit the program");
+    Console.WriteLine("------------------------------------------------------------------");
+    Console.WriteLine("");
+    Console.WriteLine("------------------------------------------------------------------");
+    Console.ResetColor();
+
+    while (true)
+    {
+        string input = Console.ReadLine();
+        // Quit and display results if user types 'q', 'quit' or 'exit'
+        if (input.ToLower().Trim() == "q" || input.ToLower().Trim() == "quit" || input.ToLower().Trim() == "exit")
+        {
+            break;
+        }
+        else if (input.ToLower().Trim() == "y" || input.ToLower().Trim() == "yes")
+        {
+            AddProducts(productList);
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("The input you entered is not valid.");
+            Console.ResetColor();
+            Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
+            Console.WriteLine("Or enter 'q' in order to quit the program");
+        }
+    }
+
+    
 }
 
 static void AddProducts(List<Product> productList)
@@ -69,8 +104,8 @@ static void AddProducts(List<Product> productList)
 
             string inputCategory = Console.ReadLine();
 
-            // Quit and display results if user types 'q'
-            if (inputCategory.ToLower().Trim() == "q")
+            // Quit and display results if user types 'q', 'quit' or 'exit'
+            if (inputCategory.ToLower().Trim() == "q" || inputCategory.ToLower().Trim() == "quit" || inputCategory.ToLower().Trim() == "exit")
             {
                 break;
             }
@@ -93,11 +128,11 @@ static void AddProducts(List<Product> productList)
 
                     string inputBrand = Console.ReadLine();
 
-                    // Quit and display results if user types 'q'
-                    if (inputBrand.ToLower().Trim() == "q")
+                    // Quit and display results if user types 'q', 'quit' or 'exit'
+                    if (inputBrand.ToLower().Trim() == "q" || inputBrand.ToLower().Trim() == "quit" || inputBrand.ToLower().Trim() == "exit")
                     {
                         break;
-                    }
+                    }                    
 
                     // Set product's brand from user input
                     else
@@ -118,11 +153,11 @@ static void AddProducts(List<Product> productList)
 
                     string inputModel = Console.ReadLine();
 
-                    // Quit and display results if user types 'q'
-                    if (inputModel.ToLower().Trim() == "q")
+                    // Quit and display results if user types 'q', 'quit' or 'exit'
+                    if (inputModel.ToLower().Trim() == "q" || inputModel.ToLower().Trim() == "quit" || inputModel.ToLower().Trim() == "exit")
                     {
                         break;
-                    }
+                    }                    
 
                     // Set product's model from user input
                     else
@@ -151,8 +186,8 @@ static void AddProducts(List<Product> productList)
 
                     string inputBrand = Console.ReadLine();
 
-                    // Quit and display results if user types 'q'
-                    if (inputBrand.ToLower().Trim() == "q")
+                    // Quit and display results if user types 'q', 'quit' or 'exit'
+                    if (inputBrand.ToLower().Trim() == "q" || inputBrand.ToLower().Trim() == "quit" || inputBrand.ToLower().Trim() == "exit")
                     {
                         break;
                     }
@@ -215,8 +250,8 @@ static void AddProducts(List<Product> productList)
 
             string inputName = Console.ReadLine();
 
-            // Quit and display results if user types 'q'
-            if (inputName.ToLower().Trim() == "q")
+            // Quit and display results if user types 'q', 'quit' or 'exit'
+            if (inputName.ToLower().Trim() == "q" || inputName.ToLower().Trim() == "quit" || inputName.ToLower().Trim() == "exit")
             {
                 break;
             }
@@ -242,8 +277,8 @@ static void AddProducts(List<Product> productList)
 
             int priceValue = 0;
 
-            // Quit and display results if user types 'q'
-            if (inputPrice.ToLower().Trim() == "q")
+            // Quit and display results if user types 'q', 'quit' or 'exit'
+            if (inputPrice.ToLower().Trim() == "q" || inputPrice.ToLower().Trim() == "quit" || inputPrice.ToLower().Trim() == "exit")
             {
                 break;
             }
@@ -300,28 +335,28 @@ static void AddProducts(List<Product> productList)
 
         }
     }
+    // Initiate sorted list
+    List<Product> sortedProductList = productList.OrderBy(Product => Product.price).ToList();
+
+    var sum = 0;
+
+    Console.WriteLine("------------------------------------------------------------------");
+    Console.WriteLine("");
+    Console.WriteLine("------------------------------------------------------------------");
+
+    Console.WriteLine("Category:".PadRight(15) + "Product Name:".PadRight(15) + "Price:".PadRight(15) + "Brand:".PadRight(15) + "Model/Resolution:");
+
+    // Add products from product list to sorted list
+    foreach (Product product in sortedProductList)
+    {
+        Console.WriteLine(product.category.name.PadRight(15) + product.productName.PadRight(15) + product.price.ToString().PadRight(15) + product.category.brand.PadRight(15) + product.category.mod_res);
+
+        // Add product price to sum
+        sum += product.price;
+    }
+
+    // Print summarized price
+    Console.WriteLine($"Total Summarized Price:".PadRight(20) + sum);
 }
 
 
-// Initiate sorted list
-List<Product> sortedProductList = productList.OrderBy(Product => Product.price).ToList();
-
-var sum = 0;
-
-Console.WriteLine("------------------------------------------------------------------");
-Console.WriteLine("");
-Console.WriteLine("------------------------------------------------------------------");
-
-Console.WriteLine("Category:".PadRight(15) + "Product Name:".PadRight(15) + "Price:".PadRight(15) + "Brand:".PadRight(15) + "Model/Resolution:");
-
-// Add products from product list to sorted list
-foreach (Product product in sortedProductList)
-{   
-    Console.WriteLine(product.category.name.PadRight(15) + product.productName.PadRight(15) + product.price.ToString().PadRight(15) + product.category.brand.PadRight(15) + product.category.mod_res);
-    
-    // Add product price to sum
-    sum += product.price;
-}
-
-// Print summarized price
-Console.WriteLine($"Total Summarized Price:".PadRight(20) + sum);
