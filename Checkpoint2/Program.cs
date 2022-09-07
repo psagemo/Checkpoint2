@@ -98,7 +98,7 @@ static void Main()
         //  Launch Search method if user types 'y' or 'yes'
         else if (input.ToLower().Trim() == "s" || input.ToLower().Trim() == "search")
         {
-            Search(List < Product > productList);
+            Search(productList);
         }
         else
         {
