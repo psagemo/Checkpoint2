@@ -26,17 +26,23 @@ using System;
 using System.Reflection;
 using Checkpoint2;
 
-Console.ForegroundColor = ConsoleColor.DarkBlue;
-Console.WriteLine("");
-Console.WriteLine("------------------------------------------------------------------");
-Console.WriteLine("");
+static void main()
+{
+    Console.ForegroundColor = ConsoleColor.DarkBlue;
+    Console.WriteLine("");
+    Console.WriteLine("------------------------------------------------------------------");
+    Console.WriteLine("");
 
-Console.WriteLine("Welcome, please enter the appropriate information when prompted.");
-Console.WriteLine("Or enter 'q' in order to quit the program");
-Console.ResetColor();
+    Console.WriteLine("Welcome, please enter the appropriate information when prompted.");
+    Console.WriteLine("Or enter 'q' in order to quit the program");
+    Console.ResetColor();
 
-// Initiate product list
-List<Product> productList = new List<Product>();
+    // Initiate product list
+    List<Product> productList = new List<Product>();
+
+}
+
+
 
 while (true)
 {
