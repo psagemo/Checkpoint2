@@ -212,8 +212,8 @@ static void AddProducts(List<Product> productList)
 
                     string inputResolution = Console.ReadLine();
 
-                    // Quit and display results if user types 'q'
-                    if (inputResolution.ToLower().Trim() == "q")
+                    // Quit and display results if user types 'q', 'quit' or 'exit'
+                    if (inputResolution.ToLower().Trim() == "q" || inputResolution.ToLower().Trim() == "quit" || inputResolution.ToLower().Trim() == "exit")
                     {
                         break;
                     }
