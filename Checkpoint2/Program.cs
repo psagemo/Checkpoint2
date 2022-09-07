@@ -12,8 +12,8 @@
  * ---Present a list with all items added.
  * ---Summarize price when presenting list.   
  * ---The list should be sorted from low price to high and a sum at the bottom.
- * Make it possible to add more products after presenting the list.
- * Add Error handling to your console app.
+ * ---Make it possible to add more products after presenting the list.
+ * ---Add Error handling to your console app.
  * Refactor your code using "Linq" if possible.
  * https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/
  * 
@@ -25,6 +25,8 @@
 using System;
 using System.Reflection;
 using Checkpoint2;
+
+Main();
 
 static void Main()
 {
@@ -65,6 +67,16 @@ static void Main()
         else if (input.ToLower().Trim() == "y" || input.ToLower().Trim() == "yes")
         {
             AddProducts(productList);
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("------------------------------------------------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("------------------------------------------------------------------");
+            Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
+            Console.WriteLine("Or enter 'q' in order to quit the program");
+            Console.WriteLine("------------------------------------------------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("------------------------------------------------------------------");
+            Console.ResetColor();
         }
         else
         {
