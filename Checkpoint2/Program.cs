@@ -35,18 +35,27 @@ using System.Reflection;
 using Checkpoint2;
 using static Checkpoint2.Product;
 
+// Greeting message in Green
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("------------------------------------------------------------------");
+Console.WriteLine("------------------           WELCOME!           ------------------");
+Console.WriteLine("------------------------------------------------------------------");
+Console.ResetColor();
+Console.WriteLine("");
+Console.WriteLine("");
+
 Main();
 
 static void Main()
 {
-    // Greeting message in dark blue color
-    Console.ForegroundColor = ConsoleColor.DarkBlue;
+    Console.ForegroundColor = ConsoleColor.DarkGray;
     Console.WriteLine("");
     Console.WriteLine("------------------------------------------------------------------");
     Console.WriteLine("");
 
-    Console.WriteLine("Welcome, please enter the appropriate information when prompted.");
+    Console.WriteLine("Please enter the appropriate information when prompted.");
     Console.WriteLine("Or enter 'q' in order to quit the program");
+    Console.WriteLine("");
     Console.ResetColor();
 
     // Initiate product list
@@ -55,8 +64,8 @@ static void Main()
     // Run AddProducts method
     AddProducts(productList);
 
-    // Reuse/quit program instructions to user
-    Console.ForegroundColor = ConsoleColor.DarkBlue;
+    // Usage instructions
+    Console.ForegroundColor = ConsoleColor.DarkGray;
     Console.WriteLine("------------------------------------------------------------------");
     Console.WriteLine("");
     Console.WriteLine("------------------------------------------------------------------");
@@ -66,13 +75,16 @@ static void Main()
     Console.WriteLine("------------------------------------------------------------------");
     Console.WriteLine("");
     Console.WriteLine("------------------------------------------------------------------");
+    Console.WriteLine("");
     Console.ResetColor();
 
 
     while (true)
     {
         // Save user's input
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
         string input = Console.ReadLine();
+        Console.ResetColor();
 
         // Quit if user types 'q', 'quit' or 'exit'
         if (input.ToLower().Trim() == "q" || input.ToLower().Trim() == "quit" || input.ToLower().Trim() == "exit")
@@ -83,31 +95,42 @@ static void Main()
         else if (input.ToLower().Trim() == "y" || input.ToLower().Trim() == "yes")
         {
             AddProducts(productList);
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("------------------------------------------------------------------");
-            Console.WriteLine("");
-            Console.WriteLine("------------------------------------------------------------------");
-            Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
-            Console.WriteLine("If you would like to for a specific product, enter 's' or 'search'");
-            Console.WriteLine("Or enter 'q' in order to quit the program");
-            Console.WriteLine("------------------------------------------------------------------");
-            Console.WriteLine("");
-            Console.WriteLine("------------------------------------------------------------------");
-            Console.ResetColor();
+            Main();
+            //Console.ForegroundColor = ConsoleColor.DarkBlue;
+            //Console.WriteLine("------------------------------------------------------------------");
+            //Console.WriteLine("");
+            //Console.WriteLine("------------------------------------------------------------------");
+            //Console.WriteLine("If you would like to Add more products, enter 'y' or 'yes'");
+            //Console.WriteLine("If you would like to Search for a specific product, enter 's' or 'search'");
+            //Console.WriteLine("Or enter 'q' in order to Quit the program");
+            //Console.WriteLine("------------------------------------------------------------------");
+            //Console.WriteLine("");
+            //Console.WriteLine("------------------------------------------------------------------");
+            //Console.ResetColor();
         }
         //  Launch Search method if user types 'y' or 'yes'
         else if (input.ToLower().Trim() == "s" || input.ToLower().Trim() == "search")
         {
+            Console.WriteLine("");
+            Console.WriteLine("------------------------------------------------------------------");
+            Console.WriteLine("");
+
+            Console.WriteLine("Enter the Product Name of the product you would like to view:");
+            Console.WriteLine("Or enter 'q' in order to Quit the program");
+            Console.WriteLine("");
             Search(productList);
+            Main();
         }
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("The input you entered is not valid.");
             Console.ResetColor();
-            Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
-            Console.WriteLine("If you would like to for a specific product, enter 's' or 'search'");
-            Console.WriteLine("Or enter 'q' in order to quit the program");
+            Console.WriteLine("");
+            Main();
+            //Console.WriteLine("If you would like to add more products, enter 'y' or 'yes'");
+            //Console.WriteLine("If you would like to for a specific product, enter 's' or 'search'");
+            //Console.WriteLine("Or enter 'q' in order to Quit the program");
         }
     }
 
@@ -136,8 +159,11 @@ static void AddProducts(List<Product> productList)
             Console.WriteLine("1. Car");
             Console.WriteLine("2. TV");
             Console.WriteLine("Or enter 'q' in order to quit the program");
+            Console.WriteLine("");
 
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             string inputCategory = Console.ReadLine();
+            Console.ResetColor();
 
             // Quit and display results if user types 'q', 'quit' or 'exit'
             if (inputCategory.ToLower().Trim() == "q" || inputCategory.ToLower().Trim() == "quit" || inputCategory.ToLower().Trim() == "exit")
@@ -160,8 +186,11 @@ static void AddProducts(List<Product> productList)
 
                     Console.WriteLine("Please enter the Cars's Brand:");
                     Console.WriteLine("Or enter 'q' in order to quit the program");
+                    Console.WriteLine("");
 
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     string inputBrand = Console.ReadLine();
+                    Console.ResetColor();
 
                     // Quit and display results if user types 'q', 'quit' or 'exit'
                     if (inputBrand.ToLower().Trim() == "q" || inputBrand.ToLower().Trim() == "quit" || inputBrand.ToLower().Trim() == "exit")
@@ -185,8 +214,11 @@ static void AddProducts(List<Product> productList)
 
                     Console.WriteLine("Please enter the Cars's Model:");
                     Console.WriteLine("Or enter 'q' in order to quit the program");
-
+                    Console.WriteLine("");
+                    
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     string inputModel = Console.ReadLine();
+                    Console.ResetColor();
 
                     // Quit and display results if user types 'q', 'quit' or 'exit'
                     if (inputModel.ToLower().Trim() == "q" || inputModel.ToLower().Trim() == "quit" || inputModel.ToLower().Trim() == "exit")
@@ -218,8 +250,11 @@ static void AddProducts(List<Product> productList)
 
                     Console.WriteLine("Please enter the TV's Brand:");
                     Console.WriteLine("Or enter 'q' in order to quit the program");
+                    Console.WriteLine("");
 
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     string inputBrand = Console.ReadLine();
+                    Console.ResetColor();
 
                     // Quit and display results if user types 'q', 'quit' or 'exit'
                     if (inputBrand.ToLower().Trim() == "q" || inputBrand.ToLower().Trim() == "quit" || inputBrand.ToLower().Trim() == "exit")
@@ -244,8 +279,11 @@ static void AddProducts(List<Product> productList)
 
                     Console.WriteLine("Please enter the TV's Resolution (1k, 2k, 4k, 8k):");
                     Console.WriteLine("Or enter 'q' in order to quit the program");
-
+                    Console.WriteLine("");
+                    
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     string inputResolution = Console.ReadLine();
+                    Console.ResetColor();
 
                     // Quit and display results if user types 'q', 'quit' or 'exit'
                     if (inputResolution.ToLower().Trim() == "q" || inputResolution.ToLower().Trim() == "quit" || inputResolution.ToLower().Trim() == "exit")
@@ -270,6 +308,7 @@ static void AddProducts(List<Product> productList)
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("The entered category is not valid.");
                 Console.ResetColor();
+                Console.WriteLine("");
             }
         }
 
@@ -282,8 +321,12 @@ static void AddProducts(List<Product> productList)
 
             Console.WriteLine("Please enter the Product Name:");
             Console.WriteLine("Or enter 'q' in order to quit the program");
+            Console.WriteLine("");
 
+            
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             string inputName = Console.ReadLine();
+            Console.ResetColor();
 
             // Quit and display results if user types 'q', 'quit' or 'exit'
             if (inputName.ToLower().Trim() == "q" || inputName.ToLower().Trim() == "quit" || inputName.ToLower().Trim() == "exit")
@@ -307,8 +350,11 @@ static void AddProducts(List<Product> productList)
 
             Console.WriteLine("Please enter the Price:");
             Console.WriteLine("Or enter 'q' in order to quit the program");
+            Console.WriteLine("");
 
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             string inputPrice = Console.ReadLine();
+            Console.ResetColor();
 
             int priceValue = 0;
 
@@ -332,6 +378,7 @@ static void AddProducts(List<Product> productList)
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Price cannot be a negative number");
                     Console.ResetColor();
+                    Console.WriteLine("");
                 }
 
                 // Set product's price from user input if it's positive
@@ -351,6 +398,7 @@ static void AddProducts(List<Product> productList)
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Price must be a number");
                 Console.ResetColor();
+                Console.WriteLine("");
             }
         }
 
@@ -367,6 +415,7 @@ static void AddProducts(List<Product> productList)
             Console.WriteLine("*** PRODUCT ADDED ***");
             Console.ResetColor();
             Console.WriteLine("Add another product or quit and view results by typing 'q'");
+            Console.WriteLine("");
 
         }
     }
@@ -392,66 +441,48 @@ static void AddProducts(List<Product> productList)
 
     // Print summarized price
     Console.WriteLine($"Total Summarized Price:".PadRight(20) + sum);
+    Console.WriteLine("");
 }
 
 
 static void Search(List<Product> productList)
 {
     // Save user's input
+    Console.ForegroundColor = ConsoleColor.DarkBlue;
     string input = Console.ReadLine();
+    Console.ResetColor();
 
-    Console.WriteLine("");
-    Console.WriteLine("------------------------------------------------------------------");
-    Console.WriteLine("");
+    // Search for products and add to searchResult list
+    List<Product> searchResult =
+        (from product in productList
+            where product.productName.ToLower().Trim() == input.ToLower().Trim()
+            select product).ToList();
 
-    Console.WriteLine("Enter the Product Name of the product you would like to view:");
-
-    while (true)
+    // Print error message if no results where found
+    if (searchResult.Count == 0)
     {
-        // Quit and display results if user types 'q', 'quit' or 'exit'
-        if (input.ToLower().Trim() == "q" || input.ToLower().Trim() == "quit" || input.ToLower().Trim() == "exit")
+        Console.WriteLine("");
+        Console.WriteLine("------------------------------------------------------------------");
+        Console.WriteLine("");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Your search did not return any results");
+        Console.ResetColor();
+        Console.WriteLine("");
+    }
+    else
+    {
+        // Print results from search in console
+        foreach (Product product in searchResult)
         {
-            break;
+            Console.WriteLine("------------------------------------------------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("------------------------------------------------------------------");
+
+            Console.WriteLine("Category:".PadRight(15) + "Product Name:".PadRight(15) + "Price:".PadRight(15) + "Brand:".PadRight(15) + "Model/Resolution:");
+
+            Console.WriteLine(product.category.name.PadRight(15) + product.productName.PadRight(15) + product.price.ToString().PadRight(15) + product.category.brand.PadRight(15) + product.category.mod_res);
         }
-        else
-        {
-            // Search for products and add to searchResult list
-            List<Product> searchResult =
-                (from product in productList
-                 where product.productName.ToLower().Trim() == input.ToLower().Trim()
-                 select product).ToList();
-
-            // Print error message if no results where found
-            if (searchResult.Count == 0)
-            {
-                Console.WriteLine("");
-                Console.WriteLine("------------------------------------------------------------------");
-                Console.WriteLine("");
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Your search did not return any results");
-                Console.ResetColor();
-
-                Console.WriteLine("");
-                Console.WriteLine("------------------------------------------------------------------");
-                Console.WriteLine("");
-
-                Console.WriteLine("Enter the name of the product you would like to view:");
-            }
-            else
-            {
-                // Print results from search in console
-                foreach (Product product in searchResult)
-                {
-                    Console.WriteLine("------------------------------------------------------------------");
-                    Console.WriteLine("");
-                    Console.WriteLine("------------------------------------------------------------------");
-
-                    Console.WriteLine("Category:".PadRight(15) + "Product Name:".PadRight(15) + "Price:".PadRight(15) + "Brand:".PadRight(15) + "Model/Resolution:");
-
-                    Console.WriteLine(product.category.name.PadRight(15) + product.productName.PadRight(15) + product.price.ToString().PadRight(15) + product.category.brand.PadRight(15) + product.category.mod_res);
-                }
-            }
-        }
+        Console.WriteLine("");
     }
 }
