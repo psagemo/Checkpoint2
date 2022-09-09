@@ -11,12 +11,14 @@ namespace Checkpoint2
         public string productName;
         public int price;
         public Category category;
+        public bool search;
 
         public Product(string productName, int price, Category category)
         {
             this.productName = productName;
             this.price = price;
             this.category = category;
+            this.search = false;
         }
 
         public class Category
