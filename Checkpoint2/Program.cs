@@ -1,34 +1,4 @@
-﻿/* ###Intro
- * Write a console app which starts by asking the user for: 
- * 1. Category
- * 2. Product Name
- * 3. Price
- * 
- * 
- * -----------------  DONE -----------------
- * 
- * ##Level 1-3
- * ---Your application needs at least 2 classes.
- * ---Use these classes when you add items to a list. 
- * ---You should be able to add items to the list(s) until you write "q" (for quit).
- * ---Present a list with all items added.
- * ---Summarize price when presenting list.   
- * ---The list should be sorted from low price to high and a sum at the bottom.
- * ---Make it possible to add more products after presenting the list.
- * ---Add Error handling to your console app.
- * 
- * 
- * -----------------  TODO -----------------
- * 
- * Refactor your code using "Linq" if possible.
- * https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/
- * 
- * ##Level 4 (Extra)
- * ---A) Add a Search function making it possible to search for products in presented list
- * B) Highlight the searched item in presented list.*/
-
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -98,7 +68,6 @@ static void Main(List<Product> productList)
 static void AddProducts(List<Product> productList)
 {
     bool quit = false;
-
     string category = "";
     string productName = "";
     int price = 0;
@@ -108,7 +77,6 @@ static void AddProducts(List<Product> productList)
     Console.WriteLine("");
     Console.WriteLine("------------------------------------------------------------------------------------------------------");
     Console.WriteLine("");
-
     Console.WriteLine("Please enter the Products's Category:");
     Console.WriteLine("1. Car");
     Console.WriteLine("2. TV");
@@ -129,12 +97,11 @@ static void AddProducts(List<Product> productList)
         {
             quit = true;
             
-            // Print 
+            // Print products
             if (productList.Count() != 0)
             {
                 PrintList(productList);
             }
-            
             break;
         }
 
@@ -150,7 +117,6 @@ static void AddProducts(List<Product> productList)
                 Console.WriteLine("");
                 Console.WriteLine("------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("");
-
                 Console.WriteLine("Please enter the Cars's Brand:");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("Or enter 'Q' in order to quit to main menu");
@@ -180,7 +146,6 @@ static void AddProducts(List<Product> productList)
                 Console.WriteLine("");
                 Console.WriteLine("------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("");
-
                 Console.WriteLine("Please enter the Cars's Model:");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("Or enter 'Q' in order to quit to main menu");
@@ -217,7 +182,6 @@ static void AddProducts(List<Product> productList)
                 Console.WriteLine("");
                 Console.WriteLine("------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("");
-
                 Console.WriteLine("Please enter the TV's Brand:");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("Or enter 'Q' in order to quit to main menu");
@@ -248,13 +212,11 @@ static void AddProducts(List<Product> productList)
                 Console.WriteLine("");
                 Console.WriteLine("------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("");
-
                 Console.WriteLine("Please enter the TV's Resolution (1k, 2k, 4k, 8k):");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("Or enter 'Q' in order to quit to main menu");
                 Console.ResetColor();
                 Console.WriteLine("");
-
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
                 string inputResolution = Console.ReadLine();
                 Console.ResetColor();
@@ -278,7 +240,6 @@ static void AddProducts(List<Product> productList)
             Console.WriteLine("");
             Console.WriteLine("------------------------------------------------------------------------------------------------------");
             Console.WriteLine("");
-
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("The entered category is not valid.");
             Console.ResetColor();
@@ -286,22 +247,17 @@ static void AddProducts(List<Product> productList)
         }
     }
 
-    
-
     while (productName == "" && quit == false)
     {
         // Prompt user to enter product name if missing
         Console.WriteLine("");
         Console.WriteLine("------------------------------------------------------------------------------------------------------");
         Console.WriteLine("");
-
         Console.WriteLine("Please enter the Product Name:     ");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine("Or enter 'Q' in order to quit to main menu");
         Console.ResetColor();
         Console.WriteLine("");
-
-
         Console.ForegroundColor = ConsoleColor.DarkBlue;
         string inputName = Console.ReadLine();
         Console.ResetColor();
@@ -319,8 +275,6 @@ static void AddProducts(List<Product> productList)
             productName = inputName;
         }
     }
-
-    
 
     while (price <= 0 && quit == false)
     {
@@ -356,7 +310,6 @@ static void AddProducts(List<Product> productList)
                 Console.WriteLine("");
                 Console.WriteLine("------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("");
-
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Price cannot be a negative number");
                 Console.ResetColor();
@@ -376,7 +329,6 @@ static void AddProducts(List<Product> productList)
             Console.WriteLine("");
             Console.WriteLine("------------------------------------------------------------------------------------------------------");
             Console.WriteLine("");
-
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Price must be a number");
             Console.ResetColor();
@@ -392,7 +344,6 @@ static void AddProducts(List<Product> productList)
         Console.WriteLine("");
         Console.WriteLine("------------------------------------------------------------------------------------------------------");
         Console.WriteLine("");
-
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("");
         Console.WriteLine("               *** PRODUCT ADDED ***");
@@ -400,7 +351,6 @@ static void AddProducts(List<Product> productList)
         Console.ResetColor();
         Console.WriteLine("Add another product or quit and view results by typing 'Q'");
         Console.WriteLine("");
-
     }      
 }
 
@@ -409,9 +359,7 @@ static void PrintList(List<Product> productList)
 {
     // Initiate sorted list
     List<Product> sortedProductList = productList.OrderBy(Product => Product.price).ToList();
-
     var sum = 0;
-
     Console.ForegroundColor = ConsoleColor.DarkGray;
     Console.WriteLine("------------------------------------------------------------------------------------------------------");
     Console.WriteLine("");
@@ -440,7 +388,6 @@ static void PrintList(List<Product> productList)
             // Add product price to sum
             sum += product.price;
         }
-        
     }
 
     // Print summarized price
@@ -456,7 +403,6 @@ static void Search(List<Product> productList)
     Console.WriteLine("");
     Console.WriteLine("------------------------------------------------------------------------------------------------------");
     Console.WriteLine("");
-
     Console.WriteLine("Enter the Product Name of the product you would like to view:");
     Console.ForegroundColor = ConsoleColor.DarkGray;
     Console.WriteLine("Or enter 'Q' in order to QUIT to main menu");
